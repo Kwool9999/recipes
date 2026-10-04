@@ -5,6 +5,7 @@ window.RECIPE_FILES = [
   'usamgyeop-doenjang-jjigae',
   'bajirak-sundubu-jjigae',
   'gyeran-guk',
+  'hwangtae-kongnamul-guk',
   'dak-kkochi',
   'ori-naengchae',
   'tteokbokki',
