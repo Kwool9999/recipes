@@ -1,0 +1,11 @@
+{
+  "name": "내 레시피",
+  "short_name": "내 레시피",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#fbf7f1",
+  "theme_color": "#fbf7f1",
+  "icons": [
+    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml" }
+  ]
+}
