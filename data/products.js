@@ -20,3 +20,22 @@
 //     }
 //   ]
 // });
+
+productGroup({
+  id: "dried",
+  title: "건어물",
+  emoji: "🐟",
+  items: [
+    {
+      name: "용대리 황태채",
+      brand: "황태덕장 · 바다원",
+      summary: "황태를 먹기 좋게 찢어 놓은 것. 손질할 필요 없이 바로 국에 넣을 수 있어요. 한 봉지 200g.",
+      uses: ["황태콩나물국 (한 번에 60g 정도 들어가요)"],
+      where: "롯데백화점 식품관",
+      price: "200g 15,000원",
+      image: "img/products/yongdaeri-hwangtaechae.jpg",
+      tip: "봉지 라벨에는 **구입 후 냉동 보관**하라고 적혀 있어요. 원재료는 명태 100%(러시아산)예요.",
+      link: { title: "황태콩나물국 레시피 보기", url: "#/r/hwangtae-kongnamul-guk" }
+    }
+  ]
+});

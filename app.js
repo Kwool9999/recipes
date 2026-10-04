@@ -598,7 +598,7 @@
         (meta.length ? '<div class="meta">' + meta.map((m) => '<span>' + esc(m) + '</span>').join('') + '</div>' : '') +
         (p.tip ? calloutHtml('tip', p.tip) : '') +
         (p.link && p.link.url
-          ? '<div class="links"><a class="link-row" target="_blank" rel="noopener" href="' + esc(p.link.url) + '">' +
+          ? '<div class="links"><a class="link-row"' + (p.link.url.charAt(0) === '#' ? '' : ' target="_blank" rel="noopener"') + ' href="' + esc(p.link.url) + '">' +
               '<span class="link-title">' + esc(p.link.title || p.link.url) + '</span>' +
               '<span class="link-arrow">↗</span>' +
             '</a></div>'
