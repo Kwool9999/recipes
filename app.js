@@ -179,7 +179,8 @@
                   (i.note ? '<span class="ing-note">' + esc(i.note) + '</span>' : '') +
                 '</span>' +
                 (i.amount ? '<span class="ing-amount">' + esc(i.amount) + '</span>' : '') +
-              '</label>'
+              '</label>' +
+              (i.tip ? '<div class="ing-tip">💡 ' + fmt(i.tip) + '</div>' : '')
             );
           })
           .join('')
@@ -205,6 +206,27 @@
         '</div>'
       )
       .join('');
+  }
+
+  // 원본(source)과 참고한 레시피(links)를 맨 아래에 모아 보여준다
+  function linksHtml(r) {
+    const links = [];
+    if (r.source && r.source.url) links.push({ kind: '원본', title: r.source.title || r.source.label || r.source.url, url: r.source.url });
+    (r.links || []).forEach((l) => links.push({ kind: '참고', title: l.title || l.url, url: l.url }));
+    if (!links.length) return '';
+    return (
+      '<section><div class="sec-head"><h2>링크</h2></div><div class="links">' +
+      links
+        .map((l) =>
+          '<a class="link-row" target="_blank" rel="noopener" href="' + esc(l.url) + '">' +
+            '<span class="link-kind' + (l.kind === '원본' ? ' origin' : '') + '">' + l.kind + '</span>' +
+            '<span class="link-title">' + esc(l.title) + '</span>' +
+            '<span class="link-arrow">↗</span>' +
+          '</a>'
+        )
+        .join('') +
+      '</div></section>'
+    );
   }
 
   function renderRecipe(r) {
@@ -237,6 +259,7 @@
           ? '<section><div class="sec-head"><h2>팁</h2></div>' + r.tips.map((t) => calloutHtml('tip', t)).join('') + '</section>'
           : '') +
         (r.notes ? '<section><div class="sec-head"><h2>메모</h2></div><div class="notes">' + fmt(r.notes) + '</div></section>' : '') +
+        linksHtml(r) +
       '</article>';
 
     const ings = document.getElementById('ings');

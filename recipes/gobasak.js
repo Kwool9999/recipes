@@ -6,12 +6,12 @@ recipe({
   servings: '1~2인분',
   time: '25분',
   tags: ['닭고기', '구이', '에어프라이어'],
-  source: { url: 'https://www.youtube.com/watch?v=CGA62_xijzI', label: '원본 영상 보기 (초간단 고추바사삭)' },
+  source: { url: 'https://www.youtube.com/watch?v=CGA62_xijzI', label: '원본 영상 보기', title: 'Making simple Korean food - 초간단 고추바사삭' },
   ingredients: [
     {
       items: [
-        { name: '닭다리살 정육', amount: '300g', note: '메모에는 없었고 원본 영상에서 가져왔어요' },
-        { name: '식용유', amount: '5~6바퀴', note: '프라이팬으로 할 때만. 원본 영상은 5~6스푼' },
+        { name: '닭다리살 정육', amount: '300g', tip: '메모에는 고기가 적혀 있지 않았어요. 원본 영상에 닭다리살 정육 300g으로 나와요.' },
+        { name: '식용유', amount: '5~6바퀴', note: '프라이팬으로 할 때만', tip: '원본 영상에는 5~6스푼으로 나와요.' },
       ],
     },
     {
@@ -24,8 +24,8 @@ recipe({
         { name: '카레가루', amount: '1', note: '원본은 1스푼' },
         { name: '파슬리', amount: '1', note: '원본은 1스푼, 마른 파슬리 가루' },
         { name: '다진 마늘', amount: '1/2', note: '원본은 1/2스푼' },
-        { name: '후추', amount: '1/2', note: '원본은 "조금"' },
-        { name: '맛소금', amount: '1/4', note: '원본은 "한 꼬집"' },
+        { name: '후추', amount: '1/2', tip: '원본 영상에는 "조금"이라고 나와요.' },
+        { name: '맛소금', amount: '1/4', tip: '원본 영상에는 "한 꼬집"이라고 나와요.' },
       ],
     },
   ],

@@ -5,7 +5,7 @@ recipe({
   status: 'complete',
   time: '20분',
   tags: ['찌개', '돼지고기'],
-  source: { url: 'https://www.youtube.com/watch?v=PH_-nGRatgo', label: '심방골주부 영상 보기' },
+  source: { url: 'https://www.youtube.com/watch?v=PH_-nGRatgo', label: '심방골주부 영상 보기', title: '심방골주부 - 돼지고기 김치찌개 황금레시피' },
   ingredients: [
     {
       items: [
@@ -20,7 +20,7 @@ recipe({
     {
       group: '양념',
       items: [
-        { name: '들기름', amount: '1스푼', note: '영상 자막에서는 1/2스푼' },
+        { name: '들기름', amount: '1스푼', tip: '설명란에는 1스푼인데 영상 자막에는 1/2스푼으로 나와요.' },
         { name: '생강청', amount: '1스푼', note: '없으면 맛술' },
         { name: '후추', amount: '약간' },
         { name: '고추장', amount: '1스푼' },

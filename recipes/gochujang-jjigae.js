@@ -6,12 +6,12 @@ recipe({
   servings: '3인분',
   time: '30분',
   tags: ['찌개', '돼지고기'],
-  source: { url: 'https://www.youtube.com/watch?v=B2s5seuBCn0', label: '백종원 영상 보기' },
+  source: { url: 'https://www.youtube.com/watch?v=B2s5seuBCn0', label: '백종원 영상 보기', title: '백종원 - 고추장찌개가 맛있어지는 비법' },
   ingredients: [
     {
       items: [
         { name: '돼지고기 앞다리살', amount: '225g', note: '찌개용, 약 1과 1/2컵' },
-        { name: '애호박', amount: '1개', note: '약 300g' },
+        { name: '애호박', amount: '1개', note: '약 300g', tip: '메모에는 빠져 있었어요. 영상 설명란에 애호박 1개로 나와요.' },
         { name: '양파', amount: '1/2개', note: '125g' },
         { name: '대파', amount: '1/2대', note: '40g' },
         { name: '표고버섯', amount: '1개', note: '18g' },

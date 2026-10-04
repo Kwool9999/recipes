@@ -5,7 +5,7 @@ recipe({
   status: 'complete',
   time: '2분',
   tags: ['소스'],
-  source: { url: 'https://www.youtube.com/watch?v=CGA62_xijzI', label: '원본 영상 보기 (초간단 고추바사삭)' },
+  source: { url: 'https://www.youtube.com/watch?v=CGA62_xijzI', label: '원본 영상 보기', title: 'Making simple Korean food - 초간단 고추바사삭' },
   ingredients: [
     {
       group: '비율',

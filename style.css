@@ -254,6 +254,31 @@ section { margin-top: 30px; }
 .ing:has(input:checked) .ing-name,
 .ing:has(input:checked) .ing-amount { text-decoration: line-through; opacity: 0.45; }
 
+.ing-tip {
+  margin: 6px 0 2px 34px;
+  padding: 7px 11px;
+  border-left: 3px solid var(--tip-line);
+  border-radius: 6px;
+  background: var(--tip-bg);
+  font-size: 13.5px;
+}
+
+.links { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 2px 14px; }
+.link-row { display: flex; align-items: center; gap: 10px; padding: 13px 0; border-bottom: 1px solid var(--line); }
+.link-row:last-child { border-bottom: 0; }
+.link-kind {
+  flex: none;
+  padding: 2px 9px;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 700;
+}
+.link-kind.origin { background: var(--accent); color: #fff; }
+.link-title { flex: 1; min-width: 0; text-decoration: underline; text-underline-offset: 3px; }
+.link-arrow { flex: none; color: var(--muted); }
+
 .step {
   background: var(--surface);
   border: 1px solid var(--line);

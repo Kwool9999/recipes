@@ -15,13 +15,18 @@ recipe({
       items: [
         { name: '고추장', amount: '4큰술' },
         { name: '케첩', amount: '2큰술' },
-        { name: '칠리소스', amount: '2큰술', note: '스위트 칠리소스로 짐작' },
+        { name: '칠리소스', amount: '2큰술', tip: '메모에는 종류가 없었어요. 스위트 칠리소스일 것으로 생각해요.' },
         { name: '다진 마늘', amount: '1큰술' },
         { name: '설탕', amount: '4큰술' },
         { name: '물엿', amount: '4큰술' },
         { name: '후추', amount: '톡톡 2번' },
       ],
     },
+  ],
+  links: [
+    { title: '만개의레시피 닭꼬치 (참고 1)', url: 'https://www.10000recipe.com/recipe/6974351' },
+    { title: '만개의레시피 닭꼬치 (참고 2)', url: 'https://www.10000recipe.com/recipe/6835619' },
+    { title: '만개의레시피 닭꼬치 (참고 3)', url: 'https://www.10000recipe.com/recipe/6919403' },
   ],
   steps: [
     {

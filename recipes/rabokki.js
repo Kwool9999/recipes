@@ -6,16 +6,16 @@ recipe({
   servings: '1인분',
   time: '10분',
   tags: ['분식', '라면'],
-  source: { url: 'https://www.youtube.com/watch?v=6e-IbuuD6ZU', label: '백종원 영상 보기' },
+  source: { url: 'https://www.youtube.com/watch?v=6e-IbuuD6ZU', label: '백종원 영상 보기', title: '백종원 - 1분 라볶이' },
   ingredients: [
     {
       items: [
         { name: '라면', amount: '1개', note: '진라면 순한맛 추천, 국물 있는 순한맛 라면이면 됨' },
         { name: '물', amount: '270ml', note: '종이컵 약 1과 1/2컵' },
-        { name: '라면 스프', amount: '1/2', note: '분말스프. 싱거우면 2/3까지' },
+        { name: '라면 스프', amount: '1/2', note: '분말스프', tip: '원본 설명란에는 1/2~2/3로 나와요. 싱거우면 2/3까지 넣어요.' },
         { name: '고추장', amount: '20g', note: '1큰술' },
         { name: '황설탕', amount: '12g', note: '1큰술' },
-        { name: '대파', amount: '조금', note: '원본은 약 1/3대(30g)' },
+        { name: '대파', amount: '조금', tip: '원본에는 약 1/3대(30g)로 나와요. 건더기스프도 함께 넣어요.' },
       ],
     },
   ],

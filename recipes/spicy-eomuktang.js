@@ -6,11 +6,11 @@ recipe({
   servings: '2~3인분',
   time: '25분',
   tags: ['국물', '어묵'],
-  source: { url: 'https://www.youtube.com/watch?v=qSKbo8E0rlE', label: '엘레나멍 영상 보기' },
+  source: { url: 'https://www.youtube.com/watch?v=qSKbo8E0rlE', label: '엘레나멍 영상 보기', title: '엘레나멍 - 매운오뎅탕 레시피' },
   ingredients: [
     {
       items: [
-        { name: '물', amount: '1.2L' },
+        { name: '물', amount: '1.2L', tip: '이 묶음의 재료(물, 다시팩, 어묵, 콩나물, 대파, 고추)는 메모에 없었어요. 원본 영상 설명란에 이렇게 나와요.' },
         { name: '다시팩', amount: '1개' },
         { name: '어묵', amount: '원하는 만큼', note: '꼬치에 끼워서 준비' },
         { name: '콩나물', amount: '300g' },
@@ -21,12 +21,12 @@ recipe({
     {
       group: '양념',
       items: [
-        { name: '청양고춧가루', amount: '1스푼' },
+        { name: '청양고춧가루', amount: '1스푼', tip: '메모에는 숫자만 있었어요. 원본에 단위가 "스푼"으로 나와요.' },
         { name: '일반 고춧가루', amount: '3스푼' },
         { name: '다시다', amount: '1/3스푼' },
         { name: '다진 마늘', amount: '1스푼', note: '듬뿍' },
         { name: '고추장', amount: '2스푼' },
-        { name: '간장', amount: '5스푼', note: '원본은 진간장' },
+        { name: '간장', amount: '5스푼', tip: '원본에는 진간장으로 나와요.' },
         { name: '멸치액젓', amount: '3스푼' },
         { name: '미림', amount: '2스푼' },
         { name: '올리고당', amount: '4스푼' },
