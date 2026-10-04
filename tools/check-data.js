@@ -20,6 +20,13 @@ globalThis.ingredientGroup = (g) => {
 globalThis.knifeBasic = (b) => basics.push(b);
 globalThis.knifeCut = (c) => cuts.push(c);
 globalThis.tipGroup = (g) => tips.push(g);
+const products = [];
+globalThis.productGroup = (g) => {
+  for (const p of g.items || []) {
+    if (!p.name) problems.push(`추천 제품 ${g.id}: name 없음`);
+    products.push(p);
+  }
+};
 globalThis.pageSources = () => {};
 globalThis.recipe = (r) => recipes.push(r);
 
@@ -56,6 +63,13 @@ for (const b of basics) {
     try { await Deno.stat(b.image); } catch { problems.push(`그림 없음: ${b.image}`); }
   }
 }
+
+for (const p of products) {
+  if (p.image) {
+    try { await Deno.stat(p.image); } catch { problems.push(`그림 없음: ${p.image}`); }
+  }
+}
+console.log(`추천 제품 ${products.length}개`);
 
 const total = groups.reduce((n, g) => n + (g.items || []).length, 0);
 console.log(`양념 ${groups.length}개 그룹 ${total}개 항목, 칼질 기본 ${basics.length}개, 썰기 ${cuts.length}개, 팁 그룹 ${tips.length}개, 레시피 ${recipes.length}개`);

@@ -20,6 +20,8 @@
   window.knifeBasic = (b) => knifeBasics.push(b);
   window.knifeCut = (c) => knifeCuts.push(c);
   window.tipGroup = (g) => tipGroups.push(g);
+  const productGroups = [];
+  window.productGroup = (g) => productGroups.push(g);
   const sourcesByTab = {};
   window.pageSources = (tab, list) => { sourcesByTab[tab] = list; };
 
@@ -580,6 +582,49 @@
         : '<div class="empty">아직 팁이 없어요</div>');
   }
 
+  // ---------- 엄마 추천 ----------
+
+  function productHtml(p) {
+    const meta = [p.where ? '🏪 ' + p.where : '', p.price ? '💰 ' + p.price : ''].filter(Boolean);
+    return (
+      '<div class="tip-card product">' +
+        (p.image ? '<img class="product-img" src="' + esc(p.image) + '" alt="" loading="lazy">' : '') +
+        '<div class="tip-title">' + esc(p.name) +
+          (p.brand ? '<span class="item-group">' + esc(p.brand) + '</span>' : '') +
+        '</div>' +
+        (p.summary ? '<p>' + fmt(p.summary) + '</p>' : '') +
+        (p.momSays ? '<div class="tip-why"><span>엄마</span> ' + fmt(p.momSays) + '</div>' : '') +
+        (p.uses && p.uses.length ? itemBlock('🍳 이럴 때 써요', listHtml(p.uses)) : '') +
+        (meta.length ? '<div class="meta">' + meta.map((m) => '<span>' + esc(m) + '</span>').join('') + '</div>' : '') +
+        (p.tip ? calloutHtml('tip', p.tip) : '') +
+        (p.link && p.link.url
+          ? '<div class="links"><a class="link-row" target="_blank" rel="noopener" href="' + esc(p.link.url) + '">' +
+              '<span class="link-title">' + esc(p.link.title || p.link.url) + '</span>' +
+              '<span class="link-arrow">↗</span>' +
+            '</a></div>'
+          : '') +
+      '</div>'
+    );
+  }
+
+  function renderProducts() {
+    const total = productGroups.reduce((n, g) => n + (g.items || []).length, 0);
+    app.innerHTML =
+      '<div class="list-head"><h1>엄마 추천</h1><span>' + total + '개</span></div>' +
+      '<p class="page-intro">엄마가 써 보고 추천해 준 제품을 모아 둬요.</p>' +
+      (total
+        ? productGroups
+            .filter((g) => (g.items || []).length)
+            .map((g) =>
+              '<section><div class="sec-head"><h2>' + esc(g.emoji || '') + ' ' + esc(g.title) + '</h2></div>' +
+                (g.intro ? '<p class="page-intro">' + fmt(g.intro) + '</p>' : '') +
+                g.items.map(productHtml).join('') +
+              '</section>'
+            )
+            .join('')
+        : '<div class="empty">아직 추천 제품이 없어요</div>');
+  }
+
   // ---------- 라우팅 ----------
 
   function setTab(name) {
@@ -611,6 +656,10 @@
       setTab('t');
       renderTips();
       title = '요리 팁';
+    } else if (parts[0] === 'p') {
+      setTab('p');
+      renderProducts();
+      title = '엄마 추천';
     } else {
       setTab('r');
       const r = parts[0] === 'r' && recipes.find((x) => x.id === parts[1]);

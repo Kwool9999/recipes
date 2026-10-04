@@ -448,3 +448,7 @@ details.sources a { text-decoration: underline; }
   font-size: 15px;
 }
 .tip-why span { color: var(--accent); font-weight: 700; }
+
+.product-img { width: 100%; max-height: 220px; object-fit: contain; border-radius: 10px; margin-bottom: 10px; }
+.product .meta { margin-top: 12px; }
+.product .links { margin-top: 6px; }
