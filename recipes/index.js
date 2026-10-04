@@ -2,6 +2,9 @@
 window.RECIPE_FILES = [
   'gochujang-jjigae',
   'kimchi-jjigae',
+  'usamgyeop-doenjang-jjigae',
+  'bajirak-sundubu-jjigae',
+  'gyeran-guk',
   'dak-kkochi',
   'ori-naengchae',
   'tteokbokki',

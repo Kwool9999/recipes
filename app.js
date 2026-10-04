@@ -14,6 +14,9 @@
   // 데이터 파일(recipes/*.js, data/*.js)이 이 함수들을 호출해 자신을 등록한다
   window.recipe = (r) => recipes.push(r);
   window.seasoningGroup = (g) => seasonings.push(g);
+  const ingredientGroups = [];
+  const ingredientState = { query: '' };
+  window.ingredientGroup = (g) => ingredientGroups.push(g);
   window.knifeBasic = (b) => knifeBasics.push(b);
   window.knifeCut = (c) => knifeCuts.push(c);
   window.tipGroup = (g) => tipGroups.push(g);
@@ -396,6 +399,84 @@
       '</article>';
   }
 
+  // ---------- 재료 고르기 ----------
+
+  function ingredientItemHtml(item, groupLabel) {
+    return (
+      '<details class="item">' +
+        '<summary>' +
+          '<div class="item-name">' + esc(item.name) +
+            (groupLabel ? '<span class="item-group">' + esc(groupLabel) + '</span>' : '') +
+          '</div>' +
+          (item.summary ? '<div class="item-summary">' + fmt(item.summary) + '</div>' : '') +
+        '</summary>' +
+        '<div class="item-body">' +
+          (item.good && item.good.length ? itemBlock('👍 이런 걸 골라요', listHtml(item.good)) : '') +
+          (item.bad && item.bad.length ? itemBlock('👎 이런 건 피해요', listHtml(item.bad)) : '') +
+          (item.why ? itemBlock('🤔 왜 그럴까', fmt(item.why)) : '') +
+          (item.uses ? itemBlock('🍳 어디에 쓸까', fmt(item.uses)) : '') +
+          (item.season ? itemBlock('📅 제철', fmt(item.season)) : '') +
+          (item.storage ? itemBlock('📦 보관', fmt(item.storage)) : '') +
+          (item.tips || []).map((t) => calloutHtml('tip', t)).join('') +
+          (item.caution ? calloutHtml('warn', item.caution) : '') +
+        '</div>' +
+      '</details>'
+    );
+  }
+
+  function ingredientResultsHtml() {
+    const q = ingredientState.query.trim().toLowerCase();
+    if (!q) {
+      return (
+        '<div class="group-list">' +
+        ingredientGroups
+          .map((g) =>
+            '<a class="group-card" href="#/i/' + encodeURIComponent(g.id) + '">' +
+              '<span class="group-emoji">' + esc(g.emoji || '🛒') + '</span>' +
+              '<span class="group-text">' +
+                '<span class="group-title">' + esc(g.title) + '<span class="group-count">' + (g.items || []).length + '</span></span>' +
+                '<span class="group-names">' + esc((g.items || []).map((i) => i.name).join(' · ')) + '</span>' +
+              '</span>' +
+            '</a>'
+          )
+          .join('') +
+        '</div>'
+      );
+    }
+    const found = [];
+    ingredientGroups.forEach((g) =>
+      (g.items || []).forEach((i) => {
+        if ([i.name, i.summary].join(' ').toLowerCase().includes(q)) found.push(ingredientItemHtml(i, g.title));
+      })
+    );
+    return found.length ? found.join('') : '<div class="empty">찾는 재료가 없어요</div>';
+  }
+
+  function renderIngredients() {
+    const total = ingredientGroups.reduce((n, g) => n + (g.items || []).length, 0);
+    app.innerHTML =
+      '<div class="list-head"><h1>재료 고르기</h1><span>' + total + '가지</span></div>' +
+      '<p class="page-intro">장 볼 때 무엇을 보고 골라야 하는지, 사 온 뒤 어떻게 보관하는지 정리했어요.</p>' +
+      '<input class="search" id="i-search" type="search" placeholder="재료 이름으로 검색 (예: 양파)" value="' + esc(ingredientState.query) + '">' +
+      '<div id="i-results" class="results">' + ingredientResultsHtml() + '</div>';
+
+    document.getElementById('i-search').addEventListener('input', (e) => {
+      ingredientState.query = e.target.value;
+      document.getElementById('i-results').innerHTML = ingredientResultsHtml();
+    });
+  }
+
+  function renderIngredientGroup(g) {
+    app.innerHTML =
+      '<article class="doc">' +
+        '<div class="topbar"><a class="btn" href="#/i">← 재료 고르기</a></div>' +
+        '<h1>' + esc(g.emoji || '') + ' ' + esc(g.title) + '</h1>' +
+        (g.intro ? '<p class="lead">' + fmt(g.intro) + '</p>' : '') +
+        '<section>' + (g.items || []).map((i) => ingredientItemHtml(i)).join('') + '</section>' +
+        sourcesHtml(g.sources) +
+      '</article>';
+  }
+
   // ---------- 칼질 ----------
 
   function knifeBasicsHtml(group) {
@@ -518,6 +599,10 @@
       setTab('s');
       const g = seasonings.find((x) => x.id === parts[1]);
       if (g) { renderSeasoningGroup(g); title = g.title; } else { renderSeasonings(); title = '양념 사전'; scrollTop = false; }
+    } else if (parts[0] === 'i') {
+      setTab('i');
+      const g = ingredientGroups.find((x) => x.id === parts[1]);
+      if (g) { renderIngredientGroup(g); title = g.title; } else { renderIngredients(); title = '재료 고르기'; scrollTop = false; }
     } else if (parts[0] === 'k') {
       setTab('k');
       const c = knifeCuts.find((x) => x.id === parts[1]);

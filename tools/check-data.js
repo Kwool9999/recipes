@@ -9,6 +9,14 @@ const recipes = [];
 const problems = [];
 
 globalThis.seasoningGroup = (g) => groups.push(g);
+const ingredientGroups = [];
+globalThis.ingredientGroup = (g) => {
+  ingredientGroups.push(g);
+  for (const i of g.items || []) {
+    if (!i.name || !(i.good && i.good.length)) problems.push(`재료 ${g.id} / ${i.name}: good 없음`);
+  }
+  console.log(`재료 ${g.id.padEnd(10)} ${String((g.items || []).length).padStart(2)}개  ${g.emoji} ${g.title}`);
+};
 globalThis.knifeBasic = (b) => basics.push(b);
 globalThis.knifeCut = (c) => cuts.push(c);
 globalThis.tipGroup = (g) => tips.push(g);
