@@ -413,6 +413,7 @@
           (item.summary ? '<div class="item-summary">' + fmt(item.summary) + '</div>' : '') +
         '</summary>' +
         '<div class="item-body">' +
+          (item.mom ? '<div class="tip-why"><span>엄마</span> ' + fmt(item.mom) + '</div>' : '') +
           (item.good && item.good.length ? itemBlock('👍 이런 걸 골라요', listHtml(item.good)) : '') +
           (item.bad && item.bad.length ? itemBlock('👎 이런 건 피해요', listHtml(item.bad)) : '') +
           (item.why ? itemBlock('🤔 왜 그럴까', fmt(item.why)) : '') +
